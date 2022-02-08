@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Project_1.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Project_1
 {
@@ -24,6 +26,10 @@ namespace Project_1
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddDbContext<databaseContext>(options =>
+            {
+                options.UseSqlite(Configuration["ConnectionStrings:TasksConnection"]);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
