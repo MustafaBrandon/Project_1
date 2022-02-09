@@ -11,9 +11,11 @@ namespace Project_1.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly ILogger<HomeController> _logger;
         private databaseContext daContext { get; set; }
-        public HomeController(databaseContext newOne)
+        public HomeController(ILogger<HomeController> logger, databaseContext newOne)
         {
+            _logger = logger;
             daContext = newOne;
         }
 
@@ -27,11 +29,21 @@ namespace Project_1.Controllers
             return View();
         }
 
+        [HttpGet]
         public IActionResult NewTask()
         {
             ViewBag.Categories = daContext.Categories.ToList();
 
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult NewTask(Project_1.Models.Task t)
+        {
+            daContext.Add(t);
+            daContext.SaveChanges();
+
+            return View("Quadrants");
         }
     }
 }
