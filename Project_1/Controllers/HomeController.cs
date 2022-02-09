@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Project_1.Models;
 using System;
@@ -26,7 +27,9 @@ namespace Project_1.Controllers
 
         public IActionResult Quadrants()
         {
-            return View();
+            var lstTasks = daContext.Tasks.Include(x => x.Category).ToList();
+
+            return View(lstTasks);
         }
 
         [HttpGet]
