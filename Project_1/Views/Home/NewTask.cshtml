@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "New Task";
+}
+
+@model Project_1.Models.Task;
+
+<h1>New Task Entry</h1>
+<div>
+    <form method="post">
+        <label asp-for="TaskName">Task name:</label>
+        <input asp-for="TaskName"/><br />
+
+        <label asp-for="DueDate">Due Date:</label>
+        <input asp-for="DueDate"/><br />
+
+        <label asp-for="Quadrant">Quadrant:</label>
+        <input asp-for="Quadrant" /><br />
+
+        <label asp-for="CategoryId">Category:</label>
+        <select asp-for="CategoryId" >
+            <option value="">Select a Category</option>
+            @foreach (Category c in ViewBag.Categories)
+            {
+                <option value="@c.CategoryId">@c.CategoryName</option>
+            }
+        </select><br />
+
+        <label asp-for="Completed">Completed:</label>
+        <select asp-for="Completed">
+            <option value="false">No</option>
+            <option value="true">Yes</option>
+        </select><br />
+
+        <button type="submit">Add Task</button>
+
+    </form>
+</div>
