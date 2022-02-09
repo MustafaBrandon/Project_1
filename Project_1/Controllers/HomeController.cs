@@ -11,8 +11,10 @@ namespace Project_1.Controllers
 {
     public class HomeController : Controller
     {
-        public HomeController()
+        private databaseContext daContext { get; set; }
+        public HomeController(databaseContext newOne)
         {
+            daContext = newOne;
         }
 
         public IActionResult Index()
@@ -27,6 +29,8 @@ namespace Project_1.Controllers
 
         public IActionResult NewTask()
         {
+            ViewBag.Categories = daContext.Categories.ToList();
+
             return View();
         }
     }
