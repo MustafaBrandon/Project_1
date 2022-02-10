@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Confirm Delete";
+}
+
+@model Project_1.Models.Task
+
+<div class="container">
+    <h2>Are you sure you want to delete "@Model.TaskName" from your to-do List?</h2>
+
+    <form asp-controller="Home" asp-action="Delete">
+        <button class="btn btn-danger" type="submit">Delete</button>
+        <a class="btn btn-primary" asp-controller="Home" asp-action="Quadrants">Cancel</a>
+
+        <input type="hidden" asp-for="TaskId" />
+    </form>
+</div>
