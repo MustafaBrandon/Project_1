@@ -2,7 +2,7 @@
     ViewData["Title"] = "Quadrants";
 }
 
-@*@model List<Task>*@
+@model List<Project_1.Models.Task>
 
 <div class="container text-center">
     <div class="row mt-3">
@@ -11,33 +11,43 @@
                 <div class="card-body">
                     <h2 class="card-title">Quadrant 1</h2>
                     <h5 class="card-subtitle text-muted mb-3">Important / Urgent</h5>
-                    @*@foreach (toDo in Model)
+                    @foreach (var toDo in Model)
                     {
                         @if (toDo.Quadrant == 1)
                         {
-                            <div class="row">
-                                <div class="col">
-                                    <p>@toDo.DueDate</p>
+                            <div class="card py-3">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <p>@toDo.DueDate</p>
+                                    </div>
+                                    <div class="col-6">
+                                        <h5 class="card-title">@toDo.TaskName</h5>
+                                    </div>
+                                    <div class="col-3">
+                                        <a class="btn btn-primary" asp-controller="Home" asp-action="Edit" asp-route-id="@toDo.TaskId">Edit</a>
+                                    </div>
                                 </div>
-                                <div class="col">
-                                    <p>@toDo.TaskName</p>
-                                </div>
-                                <div class="col">
-                                    <p>@toDo.CategoryName</p>
-                                </div>
-                                <div class="col">
-                                    <p>@toDo.Completed</p>
-                                </div>
-
-                                <div class="col">
-                                    <a class="btn btn-primary" asp-controller="Home" asp-action="Edit" asp-route-id="@toDo.TaskId">Edit</a>
-                                </div>
-                                <div class="col">
-                                    <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@toDo.TaskId">Delete</a>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <p>For @toDo.Category.CategoryName</p>
+                                    </div>
+                                    <div class="col-6">
+                                        @if (toDo.Completed)
+                                        {
+                                            <p class="bg-success text-white rounded" style="opacity: 0.75">Completed</p>
+                                        }
+                                        else
+                                        {
+                                            <p class="bg-secondary text-white rounded" style="opacity: 0.75">Incomplete</p>
+                                        }
+                                    </div>
+                                    <div class="col-3">
+                                        <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@toDo.TaskId">Delete</a>
+                                    </div>
                                 </div>
                             </div>
                            }
-                      }*@
+                      }
                 </div>
             </div>
         </div>
@@ -46,33 +56,43 @@
                 <div class="card-body">
                     <h2 class="card-title">Quadrant 2</h2>
                     <h5 class="card-subtitle text-muted mb-3">Important / Not Urgent</h5>
-                    @*@foreach (toDo in Model)
+                    @foreach (var toDo in Model)
                     {
-                        @if (toDo.Quadrant == 1)
+                        @if (toDo.Quadrant == 2)
                         {
-                            <div class="row">
-                                <div class="col">
-                                    <p>@toDo.DueDate</p>
+                            <div class="card py-3">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <p>@toDo.DueDate</p>
+                                    </div>
+                                    <div class="col-6">
+                                        <h5 class="card-title">@toDo.TaskName</h5>
+                                    </div>
+                                    <div class="col-3">
+                                        <a class="btn btn-primary" asp-controller="Home" asp-action="Edit" asp-route-id="@toDo.TaskId">Edit</a>
+                                    </div>
                                 </div>
-                                <div class="col">
-                                    <p>@toDo.TaskName</p>
-                                </div>
-                                <div class="col">
-                                    <p>@toDo.CategoryName</p>
-                                </div>
-                                <div class="col">
-                                    <p>@toDo.Completed</p>
-                                </div>
-
-                                <div class="col">
-                                    <a class="btn btn-primary" asp-controller="Home" asp-action="Edit" asp-route-id="@toDo.TaskId">Edit</a>
-                                </div>
-                                <div class="col">
-                                    <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@toDo.TaskId">Delete</a>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <p>For @toDo.Category.CategoryName</p>
+                                    </div>
+                                    <div class="col-6">
+                                        @if (toDo.Completed)
+                                        {
+                                            <p class="bg-success text-white rounded" style="opacity: 0.75">Completed</p>
+                                        }
+                                        else
+                                        {
+                                            <p class="bg-secondary text-white rounded" style="opacity: 0.75">Incomplete</p>
+                                        }
+                                    </div>
+                                    <div class="col-3">
+                                        <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@toDo.TaskId">Delete</a>
+                                    </div>
                                 </div>
                             </div>
                         }
-                    }*@
+                    }
                 </div>
             </div>
         </div>
@@ -83,33 +103,43 @@
                 <div class="card-body">
                     <h2 class="card-title">Quadrant 3</h2>
                     <h5 class="card-subtitle text-muted mb-3">Not Important / Urgent</h5>
-                    @*@foreach (toDo in Model)
+                    @foreach (var toDo in Model)
                     {
-                        @if (toDo.Quadrant == 1)
+                        @if (toDo.Quadrant == 3)
                         {
-                            <div class="row">
-                                <div class="col">
-                                    <p>@toDo.DueDate</p>
+                            <div class="card py-3">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <p>@toDo.DueDate</p>
+                                    </div>
+                                    <div class="col-6">
+                                        <h5 class="card-title">@toDo.TaskName</h5>
+                                    </div>
+                                    <div class="col-3">
+                                        <a class="btn btn-primary" asp-controller="Home" asp-action="Edit" asp-route-id="@toDo.TaskId">Edit</a>
+                                    </div>
                                 </div>
-                                <div class="col">
-                                    <p>@toDo.TaskName</p>
-                                </div>
-                                <div class="col">
-                                    <p>@toDo.CategoryName</p>
-                                </div>
-                                <div class="col">
-                                    <p>@toDo.Completed</p>
-                                </div>
-
-                                <div class="col">
-                                    <a class="btn btn-primary" asp-controller="Home" asp-action="Edit" asp-route-id="@toDo.TaskId">Edit</a>
-                                </div>
-                                <div class="col">
-                                    <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@toDo.TaskId">Delete</a>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <p>For @toDo.Category.CategoryName</p>
+                                    </div>
+                                    <div class="col-6">
+                                        @if (toDo.Completed)
+                                        {
+                                            <p class="bg-success text-white rounded" style="opacity: 0.75">Completed</p>
+                                        }
+                                        else
+                                        {
+                                            <p class="bg-secondary text-white rounded" style="opacity: 0.75">Incomplete</p>
+                                        }
+                                    </div>
+                                    <div class="col-3">
+                                        <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@toDo.TaskId">Delete</a>
+                                    </div>
                                 </div>
                             </div>
                         }
-                    }*@
+                    }
                 </div>
             </div>
         </div>
@@ -118,33 +148,43 @@
                 <div class="card-body">
                     <h2 class="card-title">Quadrant 4</h2>
                     <h5 class="card-subtitle text-muted mb-3">Not Important / Not Urgent</h5>
-                    @*@foreach (toDo in Model)
+                    @foreach (var toDo in Model)
                     {
-                        @if (toDo.Quadrant == 1)
+                        @if (toDo.Quadrant == 4)
                         {
-                            <div class="row">
-                                <div class="col">
-                                    <p>@toDo.DueDate</p>
+                            <div class="card py-3">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <p>@toDo.DueDate</p>
+                                    </div>
+                                    <div class="col-6">
+                                        <h5 class="card-title">@toDo.TaskName</h5>
+                                    </div>
+                                    <div class="col-3">
+                                        <a class="btn btn-primary" asp-controller="Home" asp-action="Edit" asp-route-id="@toDo.TaskId">Edit</a>
+                                    </div>
                                 </div>
-                                <div class="col">
-                                    <p>@toDo.TaskName</p>
-                                </div>
-                                <div class="col">
-                                    <p>@toDo.CategoryName</p>
-                                </div>
-                                <div class="col">
-                                    <p>@toDo.Completed</p>
-                                </div>
-
-                                <div class="col">
-                                    <a class="btn btn-primary" asp-controller="Home" asp-action="Edit" asp-route-id="@toDo.TaskId">Edit</a>
-                                </div>
-                                <div class="col">
-                                    <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@toDo.TaskId">Delete</a>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <p>For @toDo.Category.CategoryName</p>
+                                    </div>
+                                    <div class="col-6">
+                                        @if (toDo.Completed)
+                                        {
+                                            <p class="bg-success text-white rounded" style="opacity: 0.75">Completed</p>
+                                        }
+                                        else
+                                        {
+                                            <p class="bg-secondary text-white rounded" style="opacity: 0.75">Incomplete</p>
+                                        }
+                                    </div>
+                                    <div class="col-3">
+                                        <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@toDo.TaskId">Delete</a>
+                                    </div>
                                 </div>
                             </div>
                         }
-                    }*@
+                    }
                 </div>
             </div>
         </div>
