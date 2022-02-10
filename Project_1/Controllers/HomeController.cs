@@ -33,6 +33,43 @@ namespace Project_1.Controllers
         }
 
         [HttpGet]
+        public IActionResult Edit(int taskid)
+        {
+            ViewBag.Categories = daContext.Categories.ToList();
+            var task = daContext.Tasks.Single(x => x.TaskId == taskid);
+
+            return View("NewTask", task);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Project_1.Models.Task t)
+        {
+            daContext.Update(t);
+            daContext.SaveChanges();
+
+            return Redirect("Quadrants");
+        }
+
+
+        [HttpGet]
+        public IActionResult Delete(int taskid)
+        {
+
+            var task = daContext.Tasks.Single(x => x.TaskId == taskid);
+
+            return View(task);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Project_1.Models.Task t)
+        {
+            daContext.Tasks.Remove(t);
+            daContext.SaveChanges();
+
+            return Redirect("Quadrants");
+        }
+
+        [HttpGet]
         public IActionResult NewTask()
         {
             ViewBag.Categories = daContext.Categories.ToList();
@@ -46,7 +83,7 @@ namespace Project_1.Controllers
             daContext.Add(t);
             daContext.SaveChanges();
 
-            return View("Quadrants");
+            return Redirect("Quadrants");
         }
     }
 }
